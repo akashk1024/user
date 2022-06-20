@@ -9,6 +9,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Date;
 import java.util.List;
 
 
@@ -49,6 +50,20 @@ public class OrderController {
         return orderService.getByOrderId(orderId);
     }
 
+    @GetMapping("view-all-order")
+    public List<Orders> getAllOrders() {
+        return orderService.getAllOrders();
+    }
+
+    @GetMapping("view-order-by-date")
+    public List<Orders> getOrderByDate(@RequestParam Date date) {
+        return orderService.getOrderByDate(date);
+    }
+
+    @GetMapping("view-order-by-price")
+    public List<Orders> getOrderByDate(double amount) {
+        return orderService.getOrderByPrice(amount);
+    }
 
     @PostMapping("remove_order")
     public void deleteOrder(Long orderId) {

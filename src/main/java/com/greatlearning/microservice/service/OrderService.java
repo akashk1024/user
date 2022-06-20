@@ -61,6 +61,7 @@ public class OrderService {
                 .userName(loggedInUserService.getUserName())
                 .items(items)
                 .amount(amount)
+                .orderDate(new Date())
                 .build();
         orders = ordersRepository.save(orders);
         return orders;
@@ -162,4 +163,11 @@ public class OrderService {
     }
 
 
+    public List<Orders> getOrderByDate(Date date) {
+        return ordersRepository.findOrdersByOrderDate(date);
+    }
+
+    public List<Orders> getOrderByPrice(double amount) {
+        return ordersRepository.findOrdersByAmount(amount);
+    }
 }
