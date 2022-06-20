@@ -7,6 +7,7 @@ import com.greatlearning.microservice.service.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Date;
@@ -15,6 +16,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/app")
+@Secured("USER")
 public class OrderController {
 
     @Autowired
